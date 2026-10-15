@@ -21,3 +21,7 @@ jobs:
         with:
           name: ehreader-3dsx
           path: ehreader.3dsx
+      - name: 安装依赖
+        run: |
+          dkp-pacman -Ss webp
+          dkp-pacman -S --noconfirm 3ds-dev 3ds-libwebp
