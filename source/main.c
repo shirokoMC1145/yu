@@ -1,7 +1,3 @@
-// EH 漫画阅读器 (New 3DS homebrew)
-// 读取 sdmc:/eh/<漫画文件夹>/<序号文件名>.(webp|jpg|png)
-// 上屏阅读(旋转成横屏全屏)，下屏选择漫画，中文界面(使用系统简体中文字体)
-
 #include <3ds.h>
 #include <citro2d.h>
 #include <webp/decode.h>
