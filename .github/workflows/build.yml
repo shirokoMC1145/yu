@@ -1,0 +1,23 @@
+name: build-3dsx
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: devkitpro/devkitarm
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安装依赖
+        run: |
+          dkp-pacman -Syu --noconfirm
+          dkp-pacman -S --noconfirm 3ds-dev 3ds-libwebp
+      - name: 下载 stb_image.h
+        run: curl -L -o source/stb_image.h https://raw.githubusercontent.com/nothings/stb/master/stb_image.h
+      - name: 编译
+        run: make TARGET=ehreader
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ehreader-3dsx
+          path: ehreader.3dsx
